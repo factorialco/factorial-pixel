@@ -90,8 +90,8 @@ var _storeCookie2 = _interopRequireDefault(_storeCookie);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (document) {
-  var url = (0, _pixelUrl2.default)(document);
+exports.default = function (document, host) {
+  var url = (0, _pixelUrl2.default)(document, host);
 
   return fetch(url).then(function (response) {
     return response.json();
@@ -119,16 +119,8 @@ var _requestParameters3 = _interopRequireDefault(_requestParameters2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (document) {
+exports.default = function (document, host) {
   var protocol = document.location.protocol;
-
-  // Insert `.com` mega hackish
-  var hostParts = document.location.host.split('.');
-  var index = hostParts.findIndex(function (part) {
-    return part.match(/factorial/);
-  });
-  hostParts.splice(index + 1, 999, 'com');
-  var newOrigin = protocol + '//' + hostParts.join('.');
 
   var _requestParameters = (0, _requestParameters3.default)(document),
       language = _requestParameters.language,
@@ -137,7 +129,7 @@ exports.default = function (document) {
   var mc = document.location.href.match(/mc=(.*)/);
   var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + document.referrer, 'language=' + language, 'landing_page=' + landingPage].join('&');
 
-  return newOrigin + '/api/internal/pixel?' + attributes;
+  return host + '/api/internal/pixel?' + attributes;
 };
 
 /***/ }),
