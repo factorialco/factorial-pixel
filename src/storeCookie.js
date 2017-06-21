@@ -1,4 +1,4 @@
-import Cookie from 'js-cookie'
+import Cookies from 'js-cookie'
 
 export default (json) => {
   Object.keys(json).forEach((key) => {

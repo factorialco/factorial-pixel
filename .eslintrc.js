@@ -1,6 +1,5 @@
 module.exports = {
   parser: 'babel-eslint',
-  plugins: [ 'flowtype' ],
 
   env: {
     browser: true,
@@ -15,8 +14,5 @@ module.exports = {
     sourceType: 'module',
   },
 
-  extends: [
-    'plugin:flowtype/recommended',
-    'standard'
-  ]
+  extends: ['standard']
 };

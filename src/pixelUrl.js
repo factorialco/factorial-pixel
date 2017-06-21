@@ -1,17 +1,15 @@
 import requestParameters from './requestParameters'
-import parseDomain from 'parse-domain'
 
 export default (document) => {
   const protocol = document.location.protocol
-  const host = document.location.host
-  const { subdomain, domain } = parseDomain(host)
 
-  let newOrigin
-  if (subdomain === '') {
-    newOrigin = `${protocol}//${domain}.com`
-  } else {
-    newOrigin = `${protocol}//${subdomain}.${domain}.com`
-  }
+  // Insert `.com` mega hackish
+  const hostParts = document.location.host.split('.')
+  const index = hostParts.findIndex((part) => {
+    return part.match(/factorial/)
+  })
+  hostParts.splice(index + 1, 999, 'com')
+  const newOrigin = `${protocol}//${hostParts.join('.')}`
 
   const { language, landingPage } = requestParameters(document)
   const mc = document.location.href.match(/mc=(.*)/)
