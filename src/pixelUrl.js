@@ -1,8 +1,7 @@
-// @flow
 import requestParameters from './requestParameters'
 import parseDomain from 'parse-domain'
 
-export default (document: any) => {
+export default (document) => {
   const protocol = document.location.protocol
   const host = document.location.host
   const { subdomain, domain } = parseDomain(host)

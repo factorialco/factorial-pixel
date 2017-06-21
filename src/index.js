@@ -1,9 +1,8 @@
-// @flow
 import 'whatwg-fetch'
 import pixelUrl from './pixelUrl'
 import storeCookie from './storeCookie'
 
-export default (document: any) => {
+export default (document) => {
   const url = pixelUrl(document)
 
   return fetch(url)

@@ -1,7 +1,6 @@
-// @flow
 import Cookie from 'js-cookie'
 
-export default (json: any) => {
+export default (json) => {
   Object.keys(json).forEach((key) => {
     Cookies.set(key, json[key])
   })
