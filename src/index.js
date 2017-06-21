@@ -5,7 +5,7 @@ import storeCookie from './storeCookie'
 export default (document, host) => {
   const url = pixelUrl(document, host)
 
-  return fetch(url)
+  return fetch(url, { credentials: 'include' })
     .then((response) => {
       return response.json()
     }).then((json) => {

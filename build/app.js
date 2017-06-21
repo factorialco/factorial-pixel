@@ -93,7 +93,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function (document, host) {
   var url = (0, _pixelUrl2.default)(document, host);
 
-  return fetch(url).then(function (response) {
+  return fetch(url, { credentials: 'include' }).then(function (response) {
     return response.json();
   }).then(function (json) {
     (0, _storeCookie2.default)(json);
