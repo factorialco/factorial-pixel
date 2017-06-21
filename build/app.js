@@ -129,7 +129,7 @@ exports.default = function (document, host) {
   var mc = document.location.href.match(/mc=(.*)/);
   var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + document.referrer, 'language=' + language, 'landing_page=' + landingPage].join('&');
 
-  return host + '/api/internal/pixel?' + attributes;
+  return protocol + '//' + host + '/api/internal/pixel?' + attributes;
 };
 
 /***/ }),
