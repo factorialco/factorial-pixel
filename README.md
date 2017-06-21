@@ -23,9 +23,9 @@ yarn add factorial-pixel
 ## Example
 
 ```js
-import pixel from 'factorial-pixel'
+import factorialPixel from 'factorial-pixel'
 
-pixel(document)
+factorialPixel(document, 'https://staging.factorialhr.com')
 ```
 
 ## Where is it used?

@@ -2,8 +2,8 @@ import 'whatwg-fetch'
 import pixelUrl from './pixelUrl'
 import storeCookie from './storeCookie'
 
-export default (document) => {
-  const url = pixelUrl(document)
+export default (document, host) => {
+  const url = pixelUrl(document, host)
 
   return fetch(url)
     .then((response) => {
