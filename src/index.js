@@ -2,8 +2,8 @@ import 'whatwg-fetch'
 import pixelUrl from './pixelUrl'
 import storeCookie from './storeCookie'
 
-export default (document, host) => {
-  const url = pixelUrl(document, host)
+document.addEventListener('DOMContentLoaded', () => {
+  const url = pixelUrl(document)
 
   return fetch(url, { credentials: 'include' })
     .then((response) => {
@@ -13,4 +13,4 @@ export default (document, host) => {
     }).catch((ex) => {
       console.error(ex)
     })
-}
+})

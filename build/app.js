@@ -74,10 +74,6 @@ var factorialPixel =
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 __webpack_require__(5);
 
 var _pixelUrl = __webpack_require__(1);
@@ -90,8 +86,8 @@ var _storeCookie2 = _interopRequireDefault(_storeCookie);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (document, host) {
-  var url = (0, _pixelUrl2.default)(document, host);
+document.addEventListener('DOMContentLoaded', function () {
+  var url = (0, _pixelUrl2.default)(document);
 
   return fetch(url, { credentials: 'include' }).then(function (response) {
     return response.json();
@@ -100,7 +96,7 @@ exports.default = function (document, host) {
   }).catch(function (ex) {
     console.error(ex);
   });
-};
+});
 
 /***/ }),
 /* 1 */
@@ -119,9 +115,7 @@ var _requestParameters3 = _interopRequireDefault(_requestParameters2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (document, host) {
-  var protocol = document.location.protocol;
-
+exports.default = function (document) {
   var _requestParameters = (0, _requestParameters3.default)(document),
       language = _requestParameters.language,
       landingPage = _requestParameters.landingPage;
@@ -129,7 +123,7 @@ exports.default = function (document, host) {
   var mc = document.location.href.match(/mc=(.*)/);
   var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + document.referrer, 'language=' + language, 'landing_page=' + landingPage].join('&');
 
-  return protocol + '//' + host + '/api/internal/pixel?' + attributes;
+  return 'https://factorialhr.com/api/internal/pixel?' + attributes;
 };
 
 /***/ }),
