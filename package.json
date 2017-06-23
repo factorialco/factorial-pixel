@@ -1,6 +1,6 @@
 {
   "name": "factorial-pixel",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Factorial marketing pixel",
   "repository": {
     "type": "git",
@@ -24,10 +24,6 @@
       "Class",
       "jest"
     ]
-  },
-  "dependencies": {
-    "js-cookie": "2.1.4",
-    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
