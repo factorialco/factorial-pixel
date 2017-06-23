@@ -109,7 +109,7 @@ exports.default = function (document) {
   var mc = document.location.href.match(/mc=(.*)/);
   var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + document.referrer, 'language=' + language, 'landing_page=' + landingPage].join('&');
 
-  return 'https://factorialhr.com/api/internal/pixel?' + attributes;
+  return '/api/internal/pixel?' + attributes;
 };
 
 /***/ }),
