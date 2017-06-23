@@ -10,5 +10,5 @@ export default (document) => {
     `landing_page=${landingPage}`
   ].join('&')
 
-  return `https://factorialhr.com/api/internal/pixel?${attributes}`
+  return `/api/internal/pixel?${attributes}`
 }
