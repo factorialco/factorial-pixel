@@ -82,6 +82,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var img = document.createElement('img');
 img.src = (0, _pixelUrl2.default)(document);
+img.width = 1;
+img.height = 1;
+img.style = "display:none;";
 document.body.appendChild(img);
 
 /***/ }),

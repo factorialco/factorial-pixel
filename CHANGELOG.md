@@ -1,5 +1,9 @@
 # Changelog
 
+## `0.2.3`
+
+Invisible pixel
+
 ## `0.2.2`
 
 Prettier pixel
