@@ -10,5 +10,7 @@ export default (document) => {
     `landing_page=${landingPage}`
   ].join('&')
 
-  return `/api/internal/pixel?${attributes}`
+  // We need to set the cookie to the app domain, so we see it everywhere.
+  const apiDomain = 'https://api.factorialhr.com'
+  return `${apiDomain}/internal/pixel?${attributes}`
 }

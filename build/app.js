@@ -84,7 +84,7 @@ var img = document.createElement('img');
 img.src = (0, _pixelUrl2.default)(document);
 img.width = 1;
 img.height = 1;
-img.style = "display:none;";
+img.style = 'display:none;';
 document.body.appendChild(img);
 
 /***/ }),
@@ -110,9 +110,11 @@ exports.default = function (document) {
       landingPage = _requestParameters.landingPage;
 
   var mc = document.location.href.match(/mc=(.*)/);
-  var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + document.referrer, 'language=' + language, 'landing_page=' + landingPage].join('&');
+  var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + document.referrer, 'language=' + language, 'landing_page=' + landingPage].join('&'
 
-  return '/api/internal/pixel?' + attributes;
+  // We need to set the cookie to the app domain, so we see it everywhere.
+  );var apiDomain = 'https://api.factorialhr.com';
+  return apiDomain + '/internal/pixel?' + attributes;
 };
 
 /***/ }),

@@ -1,5 +1,9 @@
 # Changelog
 
+## `0.3.0`
+
+Change url to always point to `api.factorialhr.com`
+
 ## `0.2.3`
 
 Invisible pixel

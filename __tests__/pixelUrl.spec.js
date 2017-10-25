@@ -12,7 +12,8 @@ describe('pixelUrl', () => {
         url: 'https://factorialhr.com/blog?mc=123',
         referrer: 'https://google.com'
       })
-      expect(pixelUrl(dom.window.document)).toEqual('https://factorialhr.com/api/internal/pixel?mc=123&referer=https://google.com/&language=en&landing_page=https://factorialhr.com/blog')
+      expect(pixelUrl(dom.window.document))
+        .toEqual('https://api.factorialhr.com/internal/pixel?mc=123&referer=https://google.com/&language=en&landing_page=https://factorialhr.com/blog')
     })
   })
 
@@ -22,7 +23,8 @@ describe('pixelUrl', () => {
       dom = new JSDOM(html, {
         url: 'https://staging.factorialhr.es/blog'
       })
-      expect(pixelUrl(dom.window.document)).toEqual('https://factorialhr.com/api/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog')
+      expect(pixelUrl(dom.window.document))
+        .toEqual('https://api.factorialhr.com/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog')
     })
   })
 })
