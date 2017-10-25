@@ -11,6 +11,6 @@ export default (document) => {
   ].join('&')
 
   // We need to set the cookie to the app domain, so we see it everywhere.
-  const apiDomain = 'https://api.factorialhr.com'
-  return `${apiDomain}/internal/pixel?${attributes}`
+  const appDomain = document.location.origin.replace(/(.*factorialhr\.)(.*)$/, '$1com')
+  return `${appDomain}/internal/pixel?${attributes}`
 }

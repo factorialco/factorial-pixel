@@ -1,5 +1,9 @@
 # Changelog
 
+## `0.4.0`
+
+Revert `0.3.0` and point to the current host instead.
+
 ## `0.3.0`
 
 Change url to always point to `api.factorialhr.com`

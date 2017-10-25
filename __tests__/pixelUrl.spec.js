@@ -13,7 +13,7 @@ describe('pixelUrl', () => {
         referrer: 'https://google.com'
       })
       expect(pixelUrl(dom.window.document))
-        .toEqual('https://api.factorialhr.com/internal/pixel?mc=123&referer=https://google.com/&language=en&landing_page=https://factorialhr.com/blog')
+        .toEqual('https://factorialhr.com/internal/pixel?mc=123&referer=https://google.com/&language=en&landing_page=https://factorialhr.com/blog')
     })
   })
 
@@ -24,7 +24,7 @@ describe('pixelUrl', () => {
         url: 'https://staging.factorialhr.es/blog'
       })
       expect(pixelUrl(dom.window.document))
-        .toEqual('https://api.factorialhr.com/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog')
+        .toEqual('https://staging.factorialhr.com/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog')
     })
   })
 })

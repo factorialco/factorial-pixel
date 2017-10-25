@@ -113,8 +113,8 @@ exports.default = function (document) {
   var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + document.referrer, 'language=' + language, 'landing_page=' + landingPage].join('&'
 
   // We need to set the cookie to the app domain, so we see it everywhere.
-  );var apiDomain = 'https://api.factorialhr.com';
-  return apiDomain + '/internal/pixel?' + attributes;
+  );var appDomain = document.location.origin.replace(/(.*factorialhr\.)(.*)$/, '$1com');
+  return appDomain + '/internal/pixel?' + attributes;
 };
 
 /***/ }),
