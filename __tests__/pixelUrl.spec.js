@@ -10,10 +10,10 @@ describe('pixelUrl', () => {
       html = "<!DOCTYPE html><html lang='en-es'></html>"
       dom = new JSDOM(html, {
         url: 'https://factorialhr.com/blog?mc=123',
-        referrer: 'https://google.com'
+        referrer: 'https://google.com?query=cómo hacer nóminas'
       })
       expect(pixelUrl(dom.window.document))
-        .toEqual('https://factorialhr.com/internal/pixel?mc=123&referer=https://google.com/&language=en&landing_page=https://factorialhr.com/blog')
+        .toEqual('https://factorialhr.com/internal/pixel?mc=123&referer=https://google.com/?query=c%25C3%25B3mo%2520hacer%2520n%25C3%25B3minas&language=en&landing_page=https://factorialhr.com/blog')
     })
   })
 

@@ -5,7 +5,7 @@ export default (document) => {
   const mc = document.location.href.match(/mc=(.*)/)
   const attributes = [
     `mc=${mc ? mc[1] : ''}`,
-    `referer=${document.referrer}`,
+    `referer=${encodeURI(document.referrer)}`,
     `language=${language}`,
     `landing_page=${landingPage}`
   ].join('&')
