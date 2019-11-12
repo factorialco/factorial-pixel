@@ -1,5 +1,13 @@
 # Changelog
 
+## `0.6.0`
+
+Use relative url instead of a host.
+
+## `0.5.0`
+
+Encode some urls.
+
 ## `0.4.0`
 
 Revert `0.3.0` and point to the current host instead.

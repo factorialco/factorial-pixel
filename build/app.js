@@ -110,11 +110,9 @@ exports.default = function (document) {
       landingPage = _requestParameters.landingPage;
 
   var mc = document.location.href.match(/mc=(.*)/);
-  var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + document.referrer, 'language=' + language, 'landing_page=' + landingPage].join('&'
+  var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage].join('&');
 
-  // We need to set the cookie to the app domain, so we see it everywhere.
-  );var appDomain = document.location.origin.replace(/(.*factorialhr\.)(.*)$/, '$1com');
-  return appDomain + '/internal/pixel?' + attributes;
+  return '/internal/pixel?' + attributes;
 };
 
 /***/ }),
@@ -129,7 +127,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = requestParameters;
 function requestParameters(document) {
-  var landing = document.location.href.split('?')[0];
+  var landing = encodeURI(document.location.href.split('?')[0]);
   var locale = document.querySelector('html').lang.split('-')[0];
 
   return {

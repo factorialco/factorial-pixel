@@ -13,7 +13,7 @@ describe('pixelUrl', () => {
         referrer: 'https://google.com?query=cómo hacer nóminas'
       })
       expect(pixelUrl(dom.window.document))
-        .toEqual('https://factorialhr.com/internal/pixel?mc=123&referer=https://google.com/?query=c%25C3%25B3mo%2520hacer%2520n%25C3%25B3minas&language=en&landing_page=https://factorialhr.com/blog')
+        .toEqual('/internal/pixel?mc=123&referer=https://google.com/?query=c%25C3%25B3mo%2520hacer%2520n%25C3%25B3minas&language=en&landing_page=https://factorialhr.com/blog')
     })
   })
 
@@ -24,7 +24,7 @@ describe('pixelUrl', () => {
         url: 'https://staging.factorialhr.es/blog'
       })
       expect(pixelUrl(dom.window.document))
-        .toEqual('https://staging.factorialhr.com/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog')
+        .toEqual('/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog')
     })
   })
 })
