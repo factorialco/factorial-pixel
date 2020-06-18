@@ -80,12 +80,25 @@ var _pixelUrl2 = _interopRequireDefault(_pixelUrl);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var img = document.createElement('img');
-img.src = (0, _pixelUrl2.default)(document);
-img.width = 1;
-img.height = 1;
-img.style = 'display:none;';
-document.body.appendChild(img);
+/**
+ * `factorialPixelDomain` can be setup by the host this way
+ * the cookie can be written in staging.factorialhr.com
+ * for example
+ */
+
+/* eslint-disable no-undef */
+var domain = window.factorialPixelDomain || 'https://factorialhr.com';
+/* eslint-enable no-undef */
+var images = [domain, ''];
+
+images.forEach(function (imageDomain) {
+  var img = document.createElement('img');
+  img.src = '' + imageDomain + (0, _pixelUrl2.default)(document);
+  img.width = 1;
+  img.height = 1;
+  img.style = 'display:none;';
+  document.body.appendChild(img);
+});
 
 /***/ }),
 /* 1 */
