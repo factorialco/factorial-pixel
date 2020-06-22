@@ -6,9 +6,9 @@ import pixelUrl from './pixelUrl'
  * for example
  */
 
-/* eslint-disable no-undef */
-const domain = window.factorialPixelDomain || 'https://factorialhr.com'
-/* eslint-enable no-undef */
+const script = document.getElementById('factorial-pixel')
+const customDomain = script ? script.getAttribute('data-domain') : null
+const domain = customDomain || 'https://factorialhr.com'
 const images = [domain, '']
 
 images.forEach((imageDomain) => {
