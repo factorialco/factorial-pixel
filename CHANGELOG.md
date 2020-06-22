@@ -1,5 +1,10 @@
 # Changelog
 
+## `0.7.0`
+
+Print 2 cookies pixels. One in country domain as always like for example `factorial.fr` and the other
+on `factorialhr.com` main domain.
+
 ## `0.6.0`
 
 Use relative url instead of a host.
