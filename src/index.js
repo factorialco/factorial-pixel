@@ -9,7 +9,8 @@ import pixelUrl from './pixelUrl'
 const script = document.getElementById('factorial-pixel')
 const customDomain = script ? script.getAttribute('data-domain') : null
 const domain = customDomain || 'https://factorialhr.com'
-const images = [domain, '']
+const origin = document.location.origin
+const images = domain === origin ? [''] : [domain, '']
 
 images.forEach((imageDomain) => {
   const img = document.createElement('img')
