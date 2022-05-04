@@ -1,5 +1,9 @@
 # Changelog
 
+## `0.7.3`
+
+Add tracking for Google Click ID
+
 ## `0.7.2`
 
 Do not trigger 2 pixels when origin domain is the same as config domain
@@ -7,7 +11,6 @@ Do not trigger 2 pixels when origin domain is the same as config domain
 ## `0.7.1`
 
 Pick custom domain from script tag data-domain attribute. This way the config is centralized.
-
 
 ## `0.7.0`
 
