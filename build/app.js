@@ -125,9 +125,13 @@ exports.default = function (document) {
       gclid = _requestParameters.gclid;
 
   var mc = document.location.href.match(/mc=(.*)/);
-  var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage, 'gclid=' + gclid].join('&');
+  var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage];
 
-  return '/internal/pixel?' + attributes;
+  if (gclid) {
+    attributes.push('gclid=' + gclid);
+  }
+
+  return '/internal/pixel?' + attributes.join('&');
 };
 
 /***/ }),
@@ -140,13 +144,34 @@ exports.default = function (document) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 exports.default = requestParameters;
+function findPropertyInParams() {
+  var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var property = arguments[1];
+
+  var acc = {};
+
+  params.split('&').forEach(function (param) {
+    var _param$split = param.split('='),
+        _param$split2 = _slicedToArray(_param$split, 2),
+        key = _param$split2[0],
+        value = _param$split2[1];
+
+    acc[key] = value;
+  });
+
+  return acc[property];
+}
+
 function requestParameters(document) {
   var path = document.location.origin + document.location.pathname;
-  var search = document.location.search;
+  var search = document.location.search.substring(1);
   var landing = encodeURI(path);
   var locale = document.querySelector('html').lang.split('-')[0];
-  var gclid = new URLSearchParams(search).get('gclid');
+  var gclid = findPropertyInParams(search, 'gclid');
 
   return {
     language: locale,
