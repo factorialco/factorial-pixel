@@ -7,9 +7,12 @@ export default (document) => {
     `mc=${mc ? mc[1] : ''}`,
     `referer=${encodeURI(document.referrer)}`,
     `language=${language}`,
-    `landing_page=${landingPage}`,
-    `gclid=${gclid}`,
-  ].join('&')
+    `landing_page=${landingPage}`
+  ]
 
-  return `/internal/pixel?${attributes}`
+  if (gclid) {
+    attributes.push(`gclid=${gclid}`)
+  }
+
+  return `/internal/pixel?${attributes.join('&')}`
 }

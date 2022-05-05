@@ -121,10 +121,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function (document) {
   var _requestParameters = (0, _requestParameters3.default)(document),
       language = _requestParameters.language,
-      landingPage = _requestParameters.landingPage;
+      landingPage = _requestParameters.landingPage,
+      gclid = _requestParameters.gclid;
 
   var mc = document.location.href.match(/mc=(.*)/);
-  var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage].join('&');
+  var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage, 'gclid=' + gclid].join('&');
 
   return '/internal/pixel?' + attributes;
 };
@@ -141,12 +142,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = requestParameters;
 function requestParameters(document) {
-  var landing = encodeURI(document.location.href.split('?')[0]);
+  var path = document.location.origin + document.location.pathname;
+  var search = document.location.search;
+  var landing = encodeURI(path);
   var locale = document.querySelector('html').lang.split('-')[0];
+  var gclid = new URLSearchParams(search).get('gclid');
 
   return {
     language: locale,
-    landingPage: landing
+    landingPage: landing,
+    gclid: gclid
   };
 }
 

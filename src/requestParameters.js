@@ -1,20 +1,25 @@
-function findPropertyInParams(params, property) {
-  params.split('&').reduce((acc, param) => {
+function findPropertyInParams (params = '', property) {
+  const acc = {}
+
+  params.split('&').forEach((param) => {
     const [key, value] = param.split('=')
 
-    return { ...acc, [key]: value }
-  }, {})[property]
+    acc[key] = value
+  })
+
+  return acc[property]
 }
 
-export default function requestParameters(document) {
-  const [path, params] = document.location.href.split('?')
+export default function requestParameters (document) {
+  const path = document.location.origin + document.location.pathname
+  const search = document.location.search.substring(1)
   const landing = encodeURI(path)
   const locale = document.querySelector('html').lang.split('-')[0]
-  const gclid = findPropertyInParams(params, 'gclid')
+  const gclid = findPropertyInParams(search, 'gclid')
 
   return {
     language: locale,
     landingPage: landing,
-    gclid,
+    gclid
   }
 }
