@@ -7,11 +7,24 @@ const dom = new JSDOM(html, {
   referrer: 'https://google.com?query=cómo hacer nóminas'
 })
 
+const domWithGclid = new JSDOM(html, {
+  url: 'https://factorialhr.com/team/césar?gclid=123',
+  referrer: 'https://google.com?query=cómo hacer nóminas'
+})
+
 describe('requestParameters', () => {
   it('returns the data', () => {
     expect(requestParameters(dom.window.document)).toEqual({
       landingPage: 'https://factorialhr.com/team/c%25C3%25A9sar',
       language: 'en'
+    })
+  })
+
+  it('returns the data with gclid', () => {
+    expect(requestParameters(domWithGclid.window.document)).toEqual({
+      landingPage: 'https://factorialhr.com/team/c%25C3%25A9sar',
+      language: 'en',
+      gclid: '123'
     })
   })
 })
