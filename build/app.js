@@ -88,7 +88,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var script = document.getElementById('factorial-pixel');
 var customDomain = script ? script.getAttribute('data-domain') : null;
-var domain = customDomain || 'https://api.factorialhr.com';
+var domain = customDomain || 'https://factorialhr.com';
 var origin = document.location.origin;
 var images = domain === origin ? [''] : [domain, ''];
 
