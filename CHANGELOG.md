@@ -1,5 +1,9 @@
 # Changelog
 
+## `0.7.4`
+
+Changes `factorialhr.com` domain by `api.factorialhr.com`
+
 ## `0.7.3`
 
 Add tracking for Google Click ID
