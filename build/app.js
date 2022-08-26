@@ -89,17 +89,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var script = document.getElementById('factorial-pixel');
 var customDomain = script ? script.getAttribute('data-domain') : null;
 var domain = customDomain || 'https://api.factorialhr.com';
-var origin = document.location.origin;
-var images = domain === origin ? [''] : [domain, ''];
 
-images.forEach(function (imageDomain) {
-  var img = document.createElement('img');
-  img.src = '' + imageDomain + (0, _pixelUrl2.default)(document);
-  img.width = 1;
-  img.height = 1;
-  img.style = 'display:none;';
-  document.body.appendChild(img);
-});
+var img = document.createElement('img');
+img.src = '' + domain + (0, _pixelUrl2.default)(document);
+img.width = 1;
+img.height = 1;
+img.style = 'display:none;';
+document.body.appendChild(img);
 
 /***/ }),
 /* 1 */

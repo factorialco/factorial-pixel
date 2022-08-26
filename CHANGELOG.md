@@ -1,5 +1,9 @@
 # Changelog
 
+## `0.7.5`
+
+Removes extra request to `/internal/pixel` through public domain. Only api. request is performed now.
+
 ## `0.7.4`
 
 Changes `factorialhr.com` domain by `api.factorialhr.com`
