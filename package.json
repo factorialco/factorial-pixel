@@ -1,10 +1,10 @@
 {
   "name": "factorial-pixel",
-  "version": "0.7.6",
+  "version": "0.7.7",
   "description": "Factorial marketing pixel",
   "repository": {
     "type": "git",
-    "url": "git@github.com:factorial/factorial-pixel.git"
+    "url": "git@github.com:factorialco/factorial-pixel.git"
   },
   "license": "MIT",
   "jest": {
