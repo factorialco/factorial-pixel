@@ -1,5 +1,9 @@
 # Changelog
 
+## `0.7.7`
+
+Updates repo URL in package.json for new organization
+
 ## `0.7.6`
 
 Adds tracking for AclID
