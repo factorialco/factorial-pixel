@@ -118,13 +118,17 @@ exports.default = function (document) {
   var _requestParameters = (0, _requestParameters3.default)(document),
       language = _requestParameters.language,
       landingPage = _requestParameters.landingPage,
-      gclid = _requestParameters.gclid;
+      gclid = _requestParameters.gclid,
+      aclid = _requestParameters.aclid;
 
   var mc = document.location.href.match(/mc=(.*)/);
   var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage];
 
   if (gclid) {
     attributes.push('gclid=' + gclid);
+  }
+  if (aclid) {
+    attributes.push('aclid=' + aclid);
   }
 
   return '/internal/pixel?' + attributes.join('&');
@@ -168,11 +172,13 @@ function requestParameters(document) {
   var landing = encodeURI(path);
   var locale = document.querySelector('html').lang.split('-')[0];
   var gclid = findPropertyInParams(search, 'gclid');
+  var aclid = findPropertyInParams(search, 'aclid');
 
   return {
     language: locale,
     landingPage: landing,
-    gclid: gclid
+    gclid: gclid,
+    aclid: aclid
   };
 }
 
