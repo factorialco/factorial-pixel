@@ -1,7 +1,7 @@
 function findPropertyInParams (params = '', property) {
   const acc = {}
 
-  params.split('&').forEach((param) => {
+  params.split('&').forEach(param => {
     const [key, value] = param.split('=')
 
     acc[key] = value
@@ -16,10 +16,12 @@ export default function requestParameters (document) {
   const landing = encodeURI(path)
   const locale = document.querySelector('html').lang.split('-')[0]
   const gclid = findPropertyInParams(search, 'gclid')
+  const aclid = findPropertyInParams(search, 'aclid')
 
   return {
     language: locale,
     landingPage: landing,
-    gclid
+    gclid,
+    aclid
   }
 }

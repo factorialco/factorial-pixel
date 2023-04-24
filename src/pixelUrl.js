@@ -1,7 +1,7 @@
 import requestParameters from './requestParameters'
 
-export default (document) => {
-  const { language, landingPage, gclid } = requestParameters(document)
+export default document => {
+  const { language, landingPage, gclid, aclid } = requestParameters(document)
   const mc = document.location.href.match(/mc=(.*)/)
   const attributes = [
     `mc=${mc ? mc[1] : ''}`,
@@ -12,6 +12,9 @@ export default (document) => {
 
   if (gclid) {
     attributes.push(`gclid=${gclid}`)
+  }
+  if (aclid) {
+    attributes.push(`aclid=${aclid}`)
   }
 
   return `/internal/pixel?${attributes.join('&')}`
