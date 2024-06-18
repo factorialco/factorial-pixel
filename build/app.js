@@ -119,19 +119,23 @@ exports.default = function (document) {
       language = _requestParameters.language,
       landingPage = _requestParameters.landingPage,
       gclid = _requestParameters.gclid,
-      aclid = _requestParameters.aclid;
+      aclid = _requestParameters.aclid,
+      fbclid = _requestParameters.fbclid;
 
   var mc = document.location.href.match(/mc=(.*)/);
-  var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage];
+  var attributes = ["mc=" + (mc ? mc[1] : ""), "referer=" + encodeURI(document.referrer), "language=" + language, "landing_page=" + landingPage];
 
   if (gclid) {
-    attributes.push('gclid=' + gclid);
+    attributes.push("gclid=" + gclid);
   }
   if (aclid) {
-    attributes.push('aclid=' + aclid);
+    attributes.push("aclid=" + aclid);
+  }
+  if (fbclid) {
+    attributes.push("fbclid=" + fbclid);
   }
 
-  return '/internal/pixel?' + attributes.join('&');
+  return "/internal/pixel?" + attributes.join("&");
 };
 
 /***/ }),
@@ -173,12 +177,14 @@ function requestParameters(document) {
   var locale = document.querySelector('html').lang.split('-')[0];
   var gclid = findPropertyInParams(search, 'gclid');
   var aclid = findPropertyInParams(search, 'aclid');
+  var fbclid = findPropertyInParams(search, 'fbclid');
 
   return {
     language: locale,
     landingPage: landing,
     gclid: gclid,
-    aclid: aclid
+    aclid: aclid,
+    fbclid: fbclid
   };
 }
 

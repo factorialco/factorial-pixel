@@ -1,6 +1,6 @@
 {
   "name": "factorial-pixel",
-  "version": "0.7.7",
+  "version": "0.7.8",
   "description": "Factorial marketing pixel",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
     "babel-register": "^6.24.1",
     "eslint": "^4.18.2",
     "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-node": "^5.0.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
