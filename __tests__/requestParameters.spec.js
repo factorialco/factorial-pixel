@@ -48,7 +48,9 @@ describe('requestParameters', () => {
 
   it('returns the data with fbclid', () => {
     expect(requestParameters(domWithFbclid.window.document)).toEqual({
-      landingPage: 'https://factorialhr.com/team/c%25C3%25A9sar'
+      landingPage: 'https://factorialhr.com/team/c%25C3%25A9sar',
+      language: 'en',
+      fbclid: '123'
     })
   })
 })
