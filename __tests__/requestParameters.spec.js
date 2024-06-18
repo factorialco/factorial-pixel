@@ -17,6 +17,11 @@ const domWithAclid = new JSDOM(html, {
   referrer: 'https://google.com?query=cómo hacer nóminas'
 })
 
+const domWithFbclid = new JSDOM(html, {
+  url: 'https://factorialhr.com/team/césar?fbclid=123',
+  referrer: 'https://google.com?query=cómo hacer nóminas'
+})
+
 describe('requestParameters', () => {
   it('returns the data', () => {
     expect(requestParameters(dom.window.document)).toEqual({
@@ -38,6 +43,14 @@ describe('requestParameters', () => {
       landingPage: 'https://factorialhr.com/team/c%25C3%25A9sar',
       language: 'en',
       aclid: '123'
+    })
+  })
+
+  it('returns the data with fbclid', () => {
+    expect(requestParameters(domWithFbclid.window.document)).toEqual({
+      landingPage: 'https://factorialhr.com/team/c%25C3%25A9sar',
+      language: 'en',
+      fbclid: '123'
     })
   })
 })

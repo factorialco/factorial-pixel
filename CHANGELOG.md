@@ -1,5 +1,9 @@
 # Changelog
 
+## `0.7.8`
+
+Adds tracking for FBCLID
+
 ## `0.7.7`
 
 Updates repo URL in package.json for new organization

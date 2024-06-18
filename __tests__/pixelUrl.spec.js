@@ -53,4 +53,16 @@ describe('pixelUrl', () => {
       )
     })
   })
+
+  describe('with fbclid', () => {
+    it('returns the data', () => {
+      html = "<!DOCTYPE html><html lang='es'></html>"
+      dom = new JSDOM(html, {
+        url: 'https://staging.factorialhr.es/blog?fbclid=123'
+      })
+      expect(pixelUrl(dom.window.document)).toEqual(
+        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&fbclid=123'
+      )
+    })
+  })
 })

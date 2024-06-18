@@ -17,11 +17,13 @@ export default function requestParameters (document) {
   const locale = document.querySelector('html').lang.split('-')[0]
   const gclid = findPropertyInParams(search, 'gclid')
   const aclid = findPropertyInParams(search, 'aclid')
+  const fbclid = findPropertyInParams(search, 'fbclid')
 
   return {
     language: locale,
     landingPage: landing,
     gclid,
-    aclid
+    aclid,
+    fbclid
   }
 }
