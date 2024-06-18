@@ -123,19 +123,19 @@ exports.default = function (document) {
       fbclid = _requestParameters.fbclid;
 
   var mc = document.location.href.match(/mc=(.*)/);
-  var attributes = ["mc=" + (mc ? mc[1] : ""), "referer=" + encodeURI(document.referrer), "language=" + language, "landing_page=" + landingPage];
+  var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage];
 
   if (gclid) {
-    attributes.push("gclid=" + gclid);
+    attributes.push('gclid=' + gclid);
   }
   if (aclid) {
-    attributes.push("aclid=" + aclid);
+    attributes.push('aclid=' + aclid);
   }
   if (fbclid) {
-    attributes.push("fbclid=" + fbclid);
+    attributes.push('fbclid=' + fbclid);
   }
 
-  return "/internal/pixel?" + attributes.join("&");
+  return '/internal/pixel?' + attributes.join('&');
 };
 
 /***/ }),
