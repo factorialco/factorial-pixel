@@ -1,29 +1,25 @@
-function findPropertyInParams (params = '', property) {
-  const acc = {}
+export default function requestParameters(document) {
+  const { search, origin, pathname } = document.location;
 
-  params.split('&').forEach(param => {
-    const [key, value] = param.split('=')
+  const params = new URLSearchParams(search);
+  const path = origin + pathname;
+  const landing = encodeURI(path);
+  const locale = document.querySelector("html").lang.split("-")[0];
 
-    acc[key] = value
-  })
+  function getParam(param) {
+    const value = params.get(param);
+    return value === null ? undefined : value;
+  }
 
-  return acc[property]
-}
-
-export default function requestParameters (document) {
-  const path = document.location.origin + document.location.pathname
-  const search = document.location.search.substring(1)
-  const landing = encodeURI(path)
-  const locale = document.querySelector('html').lang.split('-')[0]
-  const gclid = findPropertyInParams(search, 'gclid')
-  const aclid = findPropertyInParams(search, 'aclid')
-  const fbclid = findPropertyInParams(search, 'fbclid')
+  const gclid = getParam("gclid");
+  const aclid = getParam("aclid");
+  const fbclid = getParam("fbclid");
 
   return {
     language: locale,
     landingPage: landing,
     gclid,
     aclid,
-    fbclid
-  }
+    fbclid,
+  };
 }
