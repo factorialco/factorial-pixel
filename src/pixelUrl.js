@@ -1,12 +1,11 @@
 import requestParameters from './requestParameters'
 
 export default document => {
-  const { language, landingPage, gclid, aclid, fbclid } = requestParameters(
+  const { language, landingPage, mc, gclid, aclid, fbclid } = requestParameters(
     document
   )
-  const mc = document.location.href.match(/mc=(.*)/)
   const attributes = [
-    `mc=${mc ? mc[1] : ''}`,
+    `mc=${mc || ''}`,
     `referer=${encodeURI(document.referrer)}`,
     `language=${language}`,
     `landing_page=${landingPage}`

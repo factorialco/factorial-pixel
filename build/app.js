@@ -118,12 +118,12 @@ exports.default = function (document) {
   var _requestParameters = (0, _requestParameters3.default)(document),
       language = _requestParameters.language,
       landingPage = _requestParameters.landingPage,
+      mc = _requestParameters.mc,
       gclid = _requestParameters.gclid,
       aclid = _requestParameters.aclid,
       fbclid = _requestParameters.fbclid;
 
-  var mc = document.location.href.match(/mc=(.*)/);
-  var attributes = ['mc=' + (mc ? mc[1] : ''), 'referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage];
+  var attributes = ['mc=' + (mc || ''), 'referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage];
 
   if (gclid) {
     attributes.push('gclid=' + gclid);
@@ -175,6 +175,7 @@ function requestParameters(document) {
   var search = document.location.search.substring(1);
   var landing = encodeURI(path);
   var locale = document.querySelector('html').lang.split('-')[0];
+  var mc = findPropertyInParams(search, 'mc');
   var gclid = findPropertyInParams(search, 'gclid');
   var aclid = findPropertyInParams(search, 'aclid');
   var fbclid = findPropertyInParams(search, 'fbclid');
@@ -182,6 +183,7 @@ function requestParameters(document) {
   return {
     language: locale,
     landingPage: landing,
+    mc: mc,
     gclid: gclid,
     aclid: aclid,
     fbclid: fbclid
