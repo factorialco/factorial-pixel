@@ -65,4 +65,36 @@ describe('pixelUrl', () => {
       )
     })
   })
+
+  describe('with UTM parameters', () => {
+    it('returns the data with all UTM params', () => {
+      html = "<!DOCTYPE html><html lang='en'></html>"
+      dom = new JSDOM(html, {
+        url: 'https://factorialhr.com/blog?utm_source=google&utm_medium=cpc&utm_campaign=Q1_Brand&utm_content=ad_1&utm_term=hr_software'
+      })
+      expect(pixelUrl(dom.window.document)).toEqual(
+        '/internal/pixel?mc=&referer=&language=en&landing_page=https://factorialhr.com/blog&utm_source=google&utm_medium=cpc&utm_campaign=Q1_Brand&utm_content=ad_1&utm_term=hr_software'
+      )
+    })
+
+    it('encodes UTM parameters with special characters', () => {
+      html = "<!DOCTYPE html><html lang='en'></html>"
+      dom = new JSDOM(html, {
+        url: 'https://factorialhr.com/blog?utm_source=google&utm_campaign=Q1%20Brand%20Campaign&utm_content=ad%20%231'
+      })
+      expect(pixelUrl(dom.window.document)).toEqual(
+        '/internal/pixel?mc=&referer=&language=en&landing_page=https://factorialhr.com/blog&utm_source=google&utm_campaign=Q1%2520Brand%2520Campaign&utm_content=ad%2520%25231'
+      )
+    })
+
+    it('combines UTMs with gclid', () => {
+      html = "<!DOCTYPE html><html lang='en'></html>"
+      dom = new JSDOM(html, {
+        url: 'https://factorialhr.com/blog?utm_source=google&utm_medium=cpc&utm_campaign=Q1&gclid=test_click_123'
+      })
+      expect(pixelUrl(dom.window.document)).toEqual(
+        '/internal/pixel?mc=&referer=&language=en&landing_page=https://factorialhr.com/blog&gclid=test_click_123&utm_source=google&utm_medium=cpc&utm_campaign=Q1'
+      )
+    })
+  })
 })

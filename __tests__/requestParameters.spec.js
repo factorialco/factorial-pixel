@@ -22,6 +22,11 @@ const domWithFbclid = new JSDOM(html, {
   referrer: 'https://google.com?query=cómo hacer nóminas'
 })
 
+const domWithUtms = new JSDOM(html, {
+  url: 'https://factorialhr.com/team/césar?utm_source=google&utm_medium=cpc&utm_campaign=Q1_Brand&utm_content=ad_variant_1&utm_term=hr_software',
+  referrer: 'https://google.com?query=cómo hacer nóminas'
+})
+
 describe('requestParameters', () => {
   it('returns the data', () => {
     expect(requestParameters(dom.window.document)).toEqual({
@@ -51,6 +56,18 @@ describe('requestParameters', () => {
       landingPage: 'https://factorialhr.com/team/c%25C3%25A9sar',
       language: 'en',
       fbclid: '123'
+    })
+  })
+
+  it('returns the data with UTM parameters', () => {
+    expect(requestParameters(domWithUtms.window.document)).toEqual({
+      landingPage: 'https://factorialhr.com/team/c%25C3%25A9sar',
+      language: 'en',
+      utm_source: 'google',
+      utm_medium: 'cpc',
+      utm_campaign: 'Q1_Brand',
+      utm_content: 'ad_variant_1',
+      utm_term: 'hr_software'
     })
   })
 })

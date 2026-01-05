@@ -1,5 +1,9 @@
 # Changelog
 
+## `0.8.0`
+
+Adds support for UTM parameters (utm_source, utm_medium, utm_campaign, utm_content, utm_term). UTM parameters are automatically extracted from the URL and sent to the pixel endpoint with proper URL encoding to handle special characters.
+
 ## `0.7.8`
 
 Adds tracking for FBCLID
