@@ -121,7 +121,12 @@ exports.default = function (document) {
       mc = _requestParameters.mc,
       gclid = _requestParameters.gclid,
       aclid = _requestParameters.aclid,
-      fbclid = _requestParameters.fbclid;
+      fbclid = _requestParameters.fbclid,
+      utm_source = _requestParameters.utm_source,
+      utm_medium = _requestParameters.utm_medium,
+      utm_campaign = _requestParameters.utm_campaign,
+      utm_content = _requestParameters.utm_content,
+      utm_term = _requestParameters.utm_term;
 
   var attributes = ['mc=' + (mc || ''), 'referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage];
 
@@ -133,6 +138,21 @@ exports.default = function (document) {
   }
   if (fbclid) {
     attributes.push('fbclid=' + fbclid);
+  }
+  if (utm_source) {
+    attributes.push('utm_source=' + encodeURIComponent(utm_source));
+  }
+  if (utm_medium) {
+    attributes.push('utm_medium=' + encodeURIComponent(utm_medium));
+  }
+  if (utm_campaign) {
+    attributes.push('utm_campaign=' + encodeURIComponent(utm_campaign));
+  }
+  if (utm_content) {
+    attributes.push('utm_content=' + encodeURIComponent(utm_content));
+  }
+  if (utm_term) {
+    attributes.push('utm_term=' + encodeURIComponent(utm_term));
   }
 
   return '/internal/pixel?' + attributes.join('&');
@@ -179,6 +199,11 @@ function requestParameters(document) {
   var gclid = findPropertyInParams(search, 'gclid');
   var aclid = findPropertyInParams(search, 'aclid');
   var fbclid = findPropertyInParams(search, 'fbclid');
+  var utm_source = findPropertyInParams(search, 'utm_source');
+  var utm_medium = findPropertyInParams(search, 'utm_medium');
+  var utm_campaign = findPropertyInParams(search, 'utm_campaign');
+  var utm_content = findPropertyInParams(search, 'utm_content');
+  var utm_term = findPropertyInParams(search, 'utm_term');
 
   return {
     language: locale,
@@ -186,7 +211,12 @@ function requestParameters(document) {
     mc: mc,
     gclid: gclid,
     aclid: aclid,
-    fbclid: fbclid
+    fbclid: fbclid,
+    utm_source: utm_source,
+    utm_medium: utm_medium,
+    utm_campaign: utm_campaign,
+    utm_content: utm_content,
+    utm_term: utm_term
   };
 }
 

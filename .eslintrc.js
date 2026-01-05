@@ -14,5 +14,9 @@ module.exports = {
     sourceType: 'module',
   },
 
-  extends: ['standard']
+  extends: ['standard'],
+
+  rules: {
+    'camelcase': 'off'
+  }
 };

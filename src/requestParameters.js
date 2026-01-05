@@ -19,6 +19,11 @@ export default function requestParameters (document) {
   const gclid = findPropertyInParams(search, 'gclid')
   const aclid = findPropertyInParams(search, 'aclid')
   const fbclid = findPropertyInParams(search, 'fbclid')
+  const utm_source = findPropertyInParams(search, 'utm_source')
+  const utm_medium = findPropertyInParams(search, 'utm_medium')
+  const utm_campaign = findPropertyInParams(search, 'utm_campaign')
+  const utm_content = findPropertyInParams(search, 'utm_content')
+  const utm_term = findPropertyInParams(search, 'utm_term')
 
   return {
     language: locale,
@@ -26,6 +31,11 @@ export default function requestParameters (document) {
     mc,
     gclid,
     aclid,
-    fbclid
+    fbclid,
+    utm_source,
+    utm_medium,
+    utm_campaign,
+    utm_content,
+    utm_term
   }
 }
