@@ -97,4 +97,36 @@ describe('pixelUrl', () => {
       )
     })
   })
+
+  describe('with HSA parameters', () => {
+    it('returns the data with all HSA params', () => {
+      html = "<!DOCTYPE html><html lang='en'></html>"
+      dom = new JSDOM(html, {
+        url: 'https://factorialhr.com/blog?hsa_cam=123456&hsa_grp=789012&hsa_ad=345678&hsa_src=google&hsa_mt=exact&hsa_kw=hr_software&hsa_tgt=901234'
+      })
+      expect(pixelUrl(dom.window.document)).toEqual(
+        '/internal/pixel?mc=&referer=&language=en&landing_page=https://factorialhr.com/blog&hsa_ad=345678&hsa_cam=123456&hsa_grp=789012&hsa_kw=hr_software&hsa_mt=exact&hsa_src=google&hsa_tgt=901234'
+      )
+    })
+
+    it('encodes HSA parameters with special characters', () => {
+      html = "<!DOCTYPE html><html lang='en'></html>"
+      dom = new JSDOM(html, {
+        url: 'https://factorialhr.com/blog?hsa_cam=123&hsa_kw=hr%20software%20%23best'
+      })
+      expect(pixelUrl(dom.window.document)).toEqual(
+        '/internal/pixel?mc=&referer=&language=en&landing_page=https://factorialhr.com/blog&hsa_cam=123&hsa_kw=hr%2520software%2520%2523best'
+      )
+    })
+
+    it('combines HSA with UTM and gclid parameters', () => {
+      html = "<!DOCTYPE html><html lang='en'></html>"
+      dom = new JSDOM(html, {
+        url: 'https://factorialhr.com/blog?utm_source=google&hsa_cam=123456&hsa_src=google&gclid=test_click_123'
+      })
+      expect(pixelUrl(dom.window.document)).toEqual(
+        '/internal/pixel?mc=&referer=&language=en&landing_page=https://factorialhr.com/blog&gclid=test_click_123&utm_source=google&hsa_cam=123456&hsa_src=google'
+      )
+    })
+  })
 })

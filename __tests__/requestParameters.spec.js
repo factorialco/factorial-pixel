@@ -27,6 +27,11 @@ const domWithUtms = new JSDOM(html, {
   referrer: 'https://google.com?query=cómo hacer nóminas'
 })
 
+const domWithHsa = new JSDOM(html, {
+  url: 'https://factorialhr.com/team/césar?hsa_cam=123456&hsa_grp=789012&hsa_ad=345678&hsa_src=google&hsa_mt=exact&hsa_kw=hr_software&hsa_tgt=901234',
+  referrer: 'https://google.com?query=cómo hacer nóminas'
+})
+
 describe('requestParameters', () => {
   it('returns the data', () => {
     expect(requestParameters(dom.window.document)).toEqual({
@@ -68,6 +73,20 @@ describe('requestParameters', () => {
       utm_campaign: 'Q1_Brand',
       utm_content: 'ad_variant_1',
       utm_term: 'hr_software'
+    })
+  })
+
+  it('returns the data with HSA parameters', () => {
+    expect(requestParameters(domWithHsa.window.document)).toEqual({
+      landingPage: 'https://factorialhr.com/team/c%25C3%25A9sar',
+      language: 'en',
+      hsa_ad: '345678',
+      hsa_cam: '123456',
+      hsa_grp: '789012',
+      hsa_kw: 'hr_software',
+      hsa_mt: 'exact',
+      hsa_src: 'google',
+      hsa_tgt: '901234'
     })
   })
 })
