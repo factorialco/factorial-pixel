@@ -1,5 +1,9 @@
 # Changelog
 
+## `0.9.0`
+
+Adds support for HubSpot Ads (HSA) parameters (hsa_ad, hsa_cam, hsa_grp, hsa_kw, hsa_mt, hsa_src, hsa_tgt).
+
 ## `0.8.0`
 
 Adds support for UTM parameters (utm_source, utm_medium, utm_campaign, utm_content, utm_term). UTM parameters are automatically extracted from the URL and sent to the pixel endpoint with proper URL encoding to handle special characters.
