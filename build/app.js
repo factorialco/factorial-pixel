@@ -126,7 +126,14 @@ exports.default = function (document) {
       utm_medium = _requestParameters.utm_medium,
       utm_campaign = _requestParameters.utm_campaign,
       utm_content = _requestParameters.utm_content,
-      utm_term = _requestParameters.utm_term;
+      utm_term = _requestParameters.utm_term,
+      hsa_ad = _requestParameters.hsa_ad,
+      hsa_cam = _requestParameters.hsa_cam,
+      hsa_grp = _requestParameters.hsa_grp,
+      hsa_kw = _requestParameters.hsa_kw,
+      hsa_mt = _requestParameters.hsa_mt,
+      hsa_src = _requestParameters.hsa_src,
+      hsa_tgt = _requestParameters.hsa_tgt;
 
   var attributes = ['mc=' + (mc || ''), 'referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage];
 
@@ -153,6 +160,27 @@ exports.default = function (document) {
   }
   if (utm_term) {
     attributes.push('utm_term=' + encodeURIComponent(utm_term));
+  }
+  if (hsa_ad) {
+    attributes.push('hsa_ad=' + encodeURIComponent(hsa_ad));
+  }
+  if (hsa_cam) {
+    attributes.push('hsa_cam=' + encodeURIComponent(hsa_cam));
+  }
+  if (hsa_grp) {
+    attributes.push('hsa_grp=' + encodeURIComponent(hsa_grp));
+  }
+  if (hsa_kw) {
+    attributes.push('hsa_kw=' + encodeURIComponent(hsa_kw));
+  }
+  if (hsa_mt) {
+    attributes.push('hsa_mt=' + encodeURIComponent(hsa_mt));
+  }
+  if (hsa_src) {
+    attributes.push('hsa_src=' + encodeURIComponent(hsa_src));
+  }
+  if (hsa_tgt) {
+    attributes.push('hsa_tgt=' + encodeURIComponent(hsa_tgt));
   }
 
   return '/internal/pixel?' + attributes.join('&');
@@ -204,6 +232,13 @@ function requestParameters(document) {
   var utm_campaign = findPropertyInParams(search, 'utm_campaign');
   var utm_content = findPropertyInParams(search, 'utm_content');
   var utm_term = findPropertyInParams(search, 'utm_term');
+  var hsa_ad = findPropertyInParams(search, 'hsa_ad');
+  var hsa_cam = findPropertyInParams(search, 'hsa_cam');
+  var hsa_grp = findPropertyInParams(search, 'hsa_grp');
+  var hsa_kw = findPropertyInParams(search, 'hsa_kw');
+  var hsa_mt = findPropertyInParams(search, 'hsa_mt');
+  var hsa_src = findPropertyInParams(search, 'hsa_src');
+  var hsa_tgt = findPropertyInParams(search, 'hsa_tgt');
 
   return {
     language: locale,
@@ -216,7 +251,14 @@ function requestParameters(document) {
     utm_medium: utm_medium,
     utm_campaign: utm_campaign,
     utm_content: utm_content,
-    utm_term: utm_term
+    utm_term: utm_term,
+    hsa_ad: hsa_ad,
+    hsa_cam: hsa_cam,
+    hsa_grp: hsa_grp,
+    hsa_kw: hsa_kw,
+    hsa_mt: hsa_mt,
+    hsa_src: hsa_src,
+    hsa_tgt: hsa_tgt
   };
 }
 
