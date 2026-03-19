@@ -1,7 +1,7 @@
 import requestParameters from './requestParameters'
 
 export default document => {
-  const { language, landingPage, mc, gclid, aclid, fbclid, utm_source, utm_medium, utm_campaign, utm_content, utm_term, hsa_ad, hsa_cam, hsa_grp, hsa_kw, hsa_mt, hsa_src, hsa_tgt } = requestParameters(
+  const { language, landingPage, mc, gclid, aclid, fbclid, ttclid, li_fat_id, twclid, rdt_cid, tblci, utm_source, utm_medium, utm_campaign, utm_content, utm_term, hsa_ad, hsa_cam, hsa_grp, hsa_kw, hsa_mt, hsa_src, hsa_tgt, placement } = requestParameters(
     document
   )
   const attributes = [
@@ -19,6 +19,21 @@ export default document => {
   }
   if (fbclid) {
     attributes.push(`fbclid=${fbclid}`)
+  }
+  if (ttclid) {
+    attributes.push(`ttclid=${ttclid}`)
+  }
+  if (li_fat_id) {
+    attributes.push(`li_fat_id=${li_fat_id}`)
+  }
+  if (twclid) {
+    attributes.push(`twclid=${twclid}`)
+  }
+  if (rdt_cid) {
+    attributes.push(`rdt_cid=${rdt_cid}`)
+  }
+  if (tblci) {
+    attributes.push(`tblci=${tblci}`)
   }
   if (utm_source) {
     attributes.push(`utm_source=${encodeURIComponent(utm_source)}`)
@@ -55,6 +70,9 @@ export default document => {
   }
   if (hsa_tgt) {
     attributes.push(`hsa_tgt=${encodeURIComponent(hsa_tgt)}`)
+  }
+  if (placement) {
+    attributes.push(`placement=${encodeURIComponent(placement)}`)
   }
 
   return `/internal/pixel?${attributes.join('&')}`

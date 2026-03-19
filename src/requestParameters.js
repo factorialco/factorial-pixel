@@ -31,6 +31,12 @@ export default function requestParameters (document) {
   const hsa_mt = findPropertyInParams(search, 'hsa_mt')
   const hsa_src = findPropertyInParams(search, 'hsa_src')
   const hsa_tgt = findPropertyInParams(search, 'hsa_tgt')
+  const ttclid = findPropertyInParams(search, 'ttclid')
+  const li_fat_id = findPropertyInParams(search, 'li_fat_id')
+  const twclid = findPropertyInParams(search, 'twclid')
+  const rdt_cid = findPropertyInParams(search, 'rdt_cid')
+  const tblci = findPropertyInParams(search, 'tblci')
+  const placement = findPropertyInParams(search, 'placement')
 
   return {
     language: locale,
@@ -39,6 +45,11 @@ export default function requestParameters (document) {
     gclid,
     aclid,
     fbclid,
+    ttclid,
+    li_fat_id,
+    twclid,
+    rdt_cid,
+    tblci,
     utm_source,
     utm_medium,
     utm_campaign,
@@ -50,6 +61,7 @@ export default function requestParameters (document) {
     hsa_kw,
     hsa_mt,
     hsa_src,
-    hsa_tgt
+    hsa_tgt,
+    placement
   }
 }

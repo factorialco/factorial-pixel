@@ -122,6 +122,11 @@ exports.default = function (document) {
       gclid = _requestParameters.gclid,
       aclid = _requestParameters.aclid,
       fbclid = _requestParameters.fbclid,
+      ttclid = _requestParameters.ttclid,
+      li_fat_id = _requestParameters.li_fat_id,
+      twclid = _requestParameters.twclid,
+      rdt_cid = _requestParameters.rdt_cid,
+      tblci = _requestParameters.tblci,
       utm_source = _requestParameters.utm_source,
       utm_medium = _requestParameters.utm_medium,
       utm_campaign = _requestParameters.utm_campaign,
@@ -133,7 +138,8 @@ exports.default = function (document) {
       hsa_kw = _requestParameters.hsa_kw,
       hsa_mt = _requestParameters.hsa_mt,
       hsa_src = _requestParameters.hsa_src,
-      hsa_tgt = _requestParameters.hsa_tgt;
+      hsa_tgt = _requestParameters.hsa_tgt,
+      placement = _requestParameters.placement;
 
   var attributes = ['mc=' + (mc || ''), 'referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage];
 
@@ -145,6 +151,21 @@ exports.default = function (document) {
   }
   if (fbclid) {
     attributes.push('fbclid=' + fbclid);
+  }
+  if (ttclid) {
+    attributes.push('ttclid=' + ttclid);
+  }
+  if (li_fat_id) {
+    attributes.push('li_fat_id=' + li_fat_id);
+  }
+  if (twclid) {
+    attributes.push('twclid=' + twclid);
+  }
+  if (rdt_cid) {
+    attributes.push('rdt_cid=' + rdt_cid);
+  }
+  if (tblci) {
+    attributes.push('tblci=' + tblci);
   }
   if (utm_source) {
     attributes.push('utm_source=' + encodeURIComponent(utm_source));
@@ -181,6 +202,9 @@ exports.default = function (document) {
   }
   if (hsa_tgt) {
     attributes.push('hsa_tgt=' + encodeURIComponent(hsa_tgt));
+  }
+  if (placement) {
+    attributes.push('placement=' + encodeURIComponent(placement));
   }
 
   return '/internal/pixel?' + attributes.join('&');
@@ -239,6 +263,12 @@ function requestParameters(document) {
   var hsa_mt = findPropertyInParams(search, 'hsa_mt');
   var hsa_src = findPropertyInParams(search, 'hsa_src');
   var hsa_tgt = findPropertyInParams(search, 'hsa_tgt');
+  var ttclid = findPropertyInParams(search, 'ttclid');
+  var li_fat_id = findPropertyInParams(search, 'li_fat_id');
+  var twclid = findPropertyInParams(search, 'twclid');
+  var rdt_cid = findPropertyInParams(search, 'rdt_cid');
+  var tblci = findPropertyInParams(search, 'tblci');
+  var placement = findPropertyInParams(search, 'placement');
 
   return {
     language: locale,
@@ -247,6 +277,11 @@ function requestParameters(document) {
     gclid: gclid,
     aclid: aclid,
     fbclid: fbclid,
+    ttclid: ttclid,
+    li_fat_id: li_fat_id,
+    twclid: twclid,
+    rdt_cid: rdt_cid,
+    tblci: tblci,
     utm_source: utm_source,
     utm_medium: utm_medium,
     utm_campaign: utm_campaign,
@@ -258,7 +293,8 @@ function requestParameters(document) {
     hsa_kw: hsa_kw,
     hsa_mt: hsa_mt,
     hsa_src: hsa_src,
-    hsa_tgt: hsa_tgt
+    hsa_tgt: hsa_tgt,
+    placement: placement
   };
 }
 
