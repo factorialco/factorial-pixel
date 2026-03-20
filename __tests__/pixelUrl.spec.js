@@ -66,6 +66,78 @@ describe('pixelUrl', () => {
     })
   })
 
+  describe('with ttclid', () => {
+    it('returns the data', () => {
+      html = "<!DOCTYPE html><html lang='es'></html>"
+      dom = new JSDOM(html, {
+        url: 'https://staging.factorialhr.es/blog?ttclid=tt_123'
+      })
+      expect(pixelUrl(dom.window.document)).toEqual(
+        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&ttclid=tt_123'
+      )
+    })
+  })
+
+  describe('with li_fat_id', () => {
+    it('returns the data', () => {
+      html = "<!DOCTYPE html><html lang='es'></html>"
+      dom = new JSDOM(html, {
+        url: 'https://staging.factorialhr.es/blog?li_fat_id=li_456'
+      })
+      expect(pixelUrl(dom.window.document)).toEqual(
+        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&li_fat_id=li_456'
+      )
+    })
+  })
+
+  describe('with twclid', () => {
+    it('returns the data', () => {
+      html = "<!DOCTYPE html><html lang='es'></html>"
+      dom = new JSDOM(html, {
+        url: 'https://staging.factorialhr.es/blog?twclid=tw_789'
+      })
+      expect(pixelUrl(dom.window.document)).toEqual(
+        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&twclid=tw_789'
+      )
+    })
+  })
+
+  describe('with rdt_cid', () => {
+    it('returns the data', () => {
+      html = "<!DOCTYPE html><html lang='es'></html>"
+      dom = new JSDOM(html, {
+        url: 'https://staging.factorialhr.es/blog?rdt_cid=rd_012'
+      })
+      expect(pixelUrl(dom.window.document)).toEqual(
+        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&rdt_cid=rd_012'
+      )
+    })
+  })
+
+  describe('with tblci', () => {
+    it('returns the data', () => {
+      html = "<!DOCTYPE html><html lang='es'></html>"
+      dom = new JSDOM(html, {
+        url: 'https://staging.factorialhr.es/blog?tblci=tb_345'
+      })
+      expect(pixelUrl(dom.window.document)).toEqual(
+        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&tblci=tb_345'
+      )
+    })
+  })
+
+  describe('with placement', () => {
+    it('returns the data with encoded placement', () => {
+      html = "<!DOCTYPE html><html lang='es'></html>"
+      dom = new JSDOM(html, {
+        url: 'https://staging.factorialhr.es/blog?placement=feed'
+      })
+      expect(pixelUrl(dom.window.document)).toEqual(
+        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&placement=feed'
+      )
+    })
+  })
+
   describe('with UTM parameters', () => {
     it('returns the data with all UTM params', () => {
       html = "<!DOCTYPE html><html lang='en'></html>"
@@ -126,6 +198,18 @@ describe('pixelUrl', () => {
       })
       expect(pixelUrl(dom.window.document)).toEqual(
         '/internal/pixel?mc=&referer=&language=en&landing_page=https://factorialhr.com/blog&gclid=test_click_123&utm_source=google&hsa_cam=123456&hsa_src=google'
+      )
+    })
+  })
+
+  describe('with all click IDs and placement combined', () => {
+    it('includes all click IDs, UTMs, HSA, and placement', () => {
+      html = "<!DOCTYPE html><html lang='en'></html>"
+      dom = new JSDOM(html, {
+        url: 'https://factorialhr.com/blog?utm_source=tiktok&utm_medium=cpc&gclid=g_123&fbclid=fb_456&ttclid=tt_789&li_fat_id=li_012&twclid=tw_345&rdt_cid=rd_678&tblci=tb_901&hsa_cam=camp_1&placement=feed'
+      })
+      expect(pixelUrl(dom.window.document)).toEqual(
+        '/internal/pixel?mc=&referer=&language=en&landing_page=https://factorialhr.com/blog&gclid=g_123&fbclid=fb_456&ttclid=tt_789&li_fat_id=li_012&twclid=tw_345&rdt_cid=rd_678&tblci=tb_901&utm_source=tiktok&utm_medium=cpc&hsa_cam=camp_1&placement=feed'
       )
     })
   })

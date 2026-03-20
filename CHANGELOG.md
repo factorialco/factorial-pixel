@@ -1,5 +1,9 @@
 # Changelog
 
+## `0.10.0`
+
+Adds support for multi-platform click IDs (ttclid, li_fat_id, twclid, rdt_cid, tblci) and placement parameter.
+
 ## `0.9.0`
 
 Adds support for HubSpot Ads (HSA) parameters (hsa_ad, hsa_cam, hsa_grp, hsa_kw, hsa_mt, hsa_src, hsa_tgt).
