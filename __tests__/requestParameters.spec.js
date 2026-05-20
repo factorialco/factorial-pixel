@@ -62,6 +62,11 @@ const domWithPlacement = new JSDOM(html, {
   referrer: 'https://google.com?query=cómo hacer nóminas'
 })
 
+const domWithColabName = new JSDOM(html, {
+  url: 'https://factorialhr.com/team/césar?colab_name=my_colab',
+  referrer: 'https://google.com?query=cómo hacer nóminas'
+})
+
 describe('requestParameters', () => {
   it('returns the data', () => {
     expect(requestParameters(dom.window.document)).toEqual({
@@ -165,6 +170,14 @@ describe('requestParameters', () => {
       landingPage: 'https://factorialhr.com/team/c%25C3%25A9sar',
       language: 'en',
       placement: 'feed'
+    })
+  })
+
+  it('returns the data with colab_name', () => {
+    expect(requestParameters(domWithColabName.window.document)).toEqual({
+      landingPage: 'https://factorialhr.com/team/c%25C3%25A9sar',
+      language: 'en',
+      colab_name: 'my_colab'
     })
   })
 })
