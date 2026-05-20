@@ -1,7 +1,7 @@
 import requestParameters from './requestParameters'
 
 export default document => {
-  const { language, landingPage, mc, gclid, aclid, fbclid, ttclid, li_fat_id, twclid, rdt_cid, tblci, utm_source, utm_medium, utm_campaign, utm_content, utm_term, hsa_ad, hsa_cam, hsa_grp, hsa_kw, hsa_mt, hsa_src, hsa_tgt, placement } = requestParameters(
+  const { language, landingPage, mc, gclid, aclid, fbclid, ttclid, li_fat_id, twclid, rdt_cid, tblci, utm_source, utm_medium, utm_campaign, utm_content, utm_term, hsa_ad, hsa_cam, hsa_grp, hsa_kw, hsa_mt, hsa_src, hsa_tgt, placement, colab_name } = requestParameters(
     document
   )
   const attributes = [
@@ -73,6 +73,9 @@ export default document => {
   }
   if (placement) {
     attributes.push(`placement=${encodeURIComponent(placement)}`)
+  }
+  if (colab_name) {
+    attributes.push(`colab_name=${encodeURIComponent(colab_name)}`)
   }
 
   return `/internal/pixel?${attributes.join('&')}`

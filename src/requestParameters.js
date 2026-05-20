@@ -37,6 +37,7 @@ export default function requestParameters (document) {
   const rdt_cid = findPropertyInParams(search, 'rdt_cid')
   const tblci = findPropertyInParams(search, 'tblci')
   const placement = findPropertyInParams(search, 'placement')
+  const colab_name = findPropertyInParams(search, 'colab_name')
 
   return {
     language: locale,
@@ -62,6 +63,7 @@ export default function requestParameters (document) {
     hsa_mt,
     hsa_src,
     hsa_tgt,
-    placement
+    placement,
+    colab_name
   }
 }

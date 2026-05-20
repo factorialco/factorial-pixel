@@ -202,6 +202,18 @@ describe('pixelUrl', () => {
     })
   })
 
+  describe('with colab_name', () => {
+    it('returns the data', () => {
+      html = "<!DOCTYPE html><html lang='es'></html>"
+      dom = new JSDOM(html, {
+        url: 'https://staging.factorialhr.es/blog?colab_name=my_colab'
+      })
+      expect(pixelUrl(dom.window.document)).toEqual(
+        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&colab_name=my_colab'
+      )
+    })
+  })
+
   describe('with all click IDs and placement combined', () => {
     it('includes all click IDs, UTMs, HSA, and placement', () => {
       html = "<!DOCTYPE html><html lang='en'></html>"
