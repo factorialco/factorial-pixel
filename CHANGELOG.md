@@ -1,5 +1,10 @@
 # Changelog
 
+## `0.11.0`
+
+Adds support for colab_name parameter.
+
+
 ## `0.10.0`
 
 Adds support for multi-platform click IDs (ttclid, li_fat_id, twclid, rdt_cid, tblci) and placement parameter.
