@@ -139,7 +139,8 @@ exports.default = function (document) {
       hsa_mt = _requestParameters.hsa_mt,
       hsa_src = _requestParameters.hsa_src,
       hsa_tgt = _requestParameters.hsa_tgt,
-      placement = _requestParameters.placement;
+      placement = _requestParameters.placement,
+      colab_name = _requestParameters.colab_name;
 
   var attributes = ['mc=' + (mc || ''), 'referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage];
 
@@ -206,6 +207,9 @@ exports.default = function (document) {
   if (placement) {
     attributes.push('placement=' + encodeURIComponent(placement));
   }
+  if (colab_name) {
+    attributes.push('colab_name=' + encodeURIComponent(colab_name));
+  }
 
   return '/internal/pixel?' + attributes.join('&');
 };
@@ -269,6 +273,7 @@ function requestParameters(document) {
   var rdt_cid = findPropertyInParams(search, 'rdt_cid');
   var tblci = findPropertyInParams(search, 'tblci');
   var placement = findPropertyInParams(search, 'placement');
+  var colab_name = findPropertyInParams(search, 'colab_name');
 
   return {
     language: locale,
@@ -294,7 +299,8 @@ function requestParameters(document) {
     hsa_mt: hsa_mt,
     hsa_src: hsa_src,
     hsa_tgt: hsa_tgt,
-    placement: placement
+    placement: placement,
+    colab_name: colab_name
   };
 }
 
