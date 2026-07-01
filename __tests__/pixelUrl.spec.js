@@ -13,7 +13,7 @@ describe('pixelUrl', () => {
         referrer: 'https://google.com?query=cómo hacer nóminas'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=123&referer=https://google.com/?query=c%25C3%25B3mo%2520hacer%2520n%25C3%25B3minas&language=en&landing_page=https://factorialhr.com/blog'
+        '/attribution/pixel?referer=https://google.com/?query=c%25C3%25B3mo%2520hacer%2520n%25C3%25B3minas&language=en&landing_page=https://factorialhr.com/blog'
       )
     })
   })
@@ -25,7 +25,7 @@ describe('pixelUrl', () => {
         url: 'https://staging.factorialhr.es/blog'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog'
+        '/attribution/pixel?referer=&language=es&landing_page=https://staging.factorialhr.es/blog'
       )
     })
   })
@@ -37,7 +37,7 @@ describe('pixelUrl', () => {
         url: 'https://staging.factorialhr.es/blog?gclid=123'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&gclid=123'
+        '/attribution/pixel?referer=&language=es&landing_page=https://staging.factorialhr.es/blog&gclid=123'
       )
     })
   })
@@ -49,7 +49,7 @@ describe('pixelUrl', () => {
         url: 'https://staging.factorialhr.es/blog?aclid=123'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&aclid=123'
+        '/attribution/pixel?referer=&language=es&landing_page=https://staging.factorialhr.es/blog&aclid=123'
       )
     })
   })
@@ -61,7 +61,7 @@ describe('pixelUrl', () => {
         url: 'https://staging.factorialhr.es/blog?fbclid=123'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&fbclid=123'
+        '/attribution/pixel?referer=&language=es&landing_page=https://staging.factorialhr.es/blog&fbclid=123'
       )
     })
   })
@@ -73,7 +73,7 @@ describe('pixelUrl', () => {
         url: 'https://staging.factorialhr.es/blog?ttclid=tt_123'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&ttclid=tt_123'
+        '/attribution/pixel?referer=&language=es&landing_page=https://staging.factorialhr.es/blog&ttclid=tt_123'
       )
     })
   })
@@ -85,7 +85,7 @@ describe('pixelUrl', () => {
         url: 'https://staging.factorialhr.es/blog?li_fat_id=li_456'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&li_fat_id=li_456'
+        '/attribution/pixel?referer=&language=es&landing_page=https://staging.factorialhr.es/blog&li_fat_id=li_456'
       )
     })
   })
@@ -97,7 +97,7 @@ describe('pixelUrl', () => {
         url: 'https://staging.factorialhr.es/blog?twclid=tw_789'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&twclid=tw_789'
+        '/attribution/pixel?referer=&language=es&landing_page=https://staging.factorialhr.es/blog&twclid=tw_789'
       )
     })
   })
@@ -109,7 +109,7 @@ describe('pixelUrl', () => {
         url: 'https://staging.factorialhr.es/blog?rdt_cid=rd_012'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&rdt_cid=rd_012'
+        '/attribution/pixel?referer=&language=es&landing_page=https://staging.factorialhr.es/blog&rdt_cid=rd_012'
       )
     })
   })
@@ -121,7 +121,7 @@ describe('pixelUrl', () => {
         url: 'https://staging.factorialhr.es/blog?tblci=tb_345'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&tblci=tb_345'
+        '/attribution/pixel?referer=&language=es&landing_page=https://staging.factorialhr.es/blog&tblci=tb_345'
       )
     })
   })
@@ -133,7 +133,7 @@ describe('pixelUrl', () => {
         url: 'https://staging.factorialhr.es/blog?placement=feed'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&placement=feed'
+        '/attribution/pixel?referer=&language=es&landing_page=https://staging.factorialhr.es/blog&placement=feed'
       )
     })
   })
@@ -142,30 +142,33 @@ describe('pixelUrl', () => {
     it('returns the data with all UTM params', () => {
       html = "<!DOCTYPE html><html lang='en'></html>"
       dom = new JSDOM(html, {
-        url: 'https://factorialhr.com/blog?utm_source=google&utm_medium=cpc&utm_campaign=Q1_Brand&utm_content=ad_1&utm_term=hr_software'
+        url:
+          'https://factorialhr.com/blog?utm_source=google&utm_medium=cpc&utm_campaign=Q1_Brand&utm_content=ad_1&utm_term=hr_software'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=en&landing_page=https://factorialhr.com/blog&utm_source=google&utm_medium=cpc&utm_campaign=Q1_Brand&utm_content=ad_1&utm_term=hr_software'
+        '/attribution/pixel?referer=&language=en&landing_page=https://factorialhr.com/blog&utm_source=google&utm_medium=cpc&utm_campaign=Q1_Brand&utm_content=ad_1&utm_term=hr_software'
       )
     })
 
     it('encodes UTM parameters with special characters', () => {
       html = "<!DOCTYPE html><html lang='en'></html>"
       dom = new JSDOM(html, {
-        url: 'https://factorialhr.com/blog?utm_source=google&utm_campaign=Q1%20Brand%20Campaign&utm_content=ad%20%231'
+        url:
+          'https://factorialhr.com/blog?utm_source=google&utm_campaign=Q1%20Brand%20Campaign&utm_content=ad%20%231'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=en&landing_page=https://factorialhr.com/blog&utm_source=google&utm_campaign=Q1%2520Brand%2520Campaign&utm_content=ad%2520%25231'
+        '/attribution/pixel?referer=&language=en&landing_page=https://factorialhr.com/blog&utm_source=google&utm_campaign=Q1%2520Brand%2520Campaign&utm_content=ad%2520%25231'
       )
     })
 
     it('combines UTMs with gclid', () => {
       html = "<!DOCTYPE html><html lang='en'></html>"
       dom = new JSDOM(html, {
-        url: 'https://factorialhr.com/blog?utm_source=google&utm_medium=cpc&utm_campaign=Q1&gclid=test_click_123'
+        url:
+          'https://factorialhr.com/blog?utm_source=google&utm_medium=cpc&utm_campaign=Q1&gclid=test_click_123'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=en&landing_page=https://factorialhr.com/blog&gclid=test_click_123&utm_source=google&utm_medium=cpc&utm_campaign=Q1'
+        '/attribution/pixel?referer=&language=en&landing_page=https://factorialhr.com/blog&gclid=test_click_123&utm_source=google&utm_medium=cpc&utm_campaign=Q1'
       )
     })
   })
@@ -174,30 +177,33 @@ describe('pixelUrl', () => {
     it('returns the data with all HSA params', () => {
       html = "<!DOCTYPE html><html lang='en'></html>"
       dom = new JSDOM(html, {
-        url: 'https://factorialhr.com/blog?hsa_cam=123456&hsa_grp=789012&hsa_ad=345678&hsa_src=google&hsa_mt=exact&hsa_kw=hr_software&hsa_tgt=901234'
+        url:
+          'https://factorialhr.com/blog?hsa_cam=123456&hsa_grp=789012&hsa_ad=345678&hsa_src=google&hsa_mt=exact&hsa_kw=hr_software&hsa_tgt=901234'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=en&landing_page=https://factorialhr.com/blog&hsa_ad=345678&hsa_cam=123456&hsa_grp=789012&hsa_kw=hr_software&hsa_mt=exact&hsa_src=google&hsa_tgt=901234'
+        '/attribution/pixel?referer=&language=en&landing_page=https://factorialhr.com/blog&hsa_ad=345678&hsa_cam=123456&hsa_grp=789012&hsa_kw=hr_software&hsa_mt=exact&hsa_src=google&hsa_tgt=901234'
       )
     })
 
     it('encodes HSA parameters with special characters', () => {
       html = "<!DOCTYPE html><html lang='en'></html>"
       dom = new JSDOM(html, {
-        url: 'https://factorialhr.com/blog?hsa_cam=123&hsa_kw=hr%20software%20%23best'
+        url:
+          'https://factorialhr.com/blog?hsa_cam=123&hsa_kw=hr%20software%20%23best'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=en&landing_page=https://factorialhr.com/blog&hsa_cam=123&hsa_kw=hr%2520software%2520%2523best'
+        '/attribution/pixel?referer=&language=en&landing_page=https://factorialhr.com/blog&hsa_cam=123&hsa_kw=hr%2520software%2520%2523best'
       )
     })
 
     it('combines HSA with UTM and gclid parameters', () => {
       html = "<!DOCTYPE html><html lang='en'></html>"
       dom = new JSDOM(html, {
-        url: 'https://factorialhr.com/blog?utm_source=google&hsa_cam=123456&hsa_src=google&gclid=test_click_123'
+        url:
+          'https://factorialhr.com/blog?utm_source=google&hsa_cam=123456&hsa_src=google&gclid=test_click_123'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=en&landing_page=https://factorialhr.com/blog&gclid=test_click_123&utm_source=google&hsa_cam=123456&hsa_src=google'
+        '/attribution/pixel?referer=&language=en&landing_page=https://factorialhr.com/blog&gclid=test_click_123&utm_source=google&hsa_cam=123456&hsa_src=google'
       )
     })
   })
@@ -209,7 +215,7 @@ describe('pixelUrl', () => {
         url: 'https://staging.factorialhr.es/blog?colab_name=my_colab'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=es&landing_page=https://staging.factorialhr.es/blog&colab_name=my_colab'
+        '/attribution/pixel?referer=&language=es&landing_page=https://staging.factorialhr.es/blog&colab_name=my_colab'
       )
     })
   })
@@ -218,10 +224,11 @@ describe('pixelUrl', () => {
     it('includes all click IDs, UTMs, HSA, and placement', () => {
       html = "<!DOCTYPE html><html lang='en'></html>"
       dom = new JSDOM(html, {
-        url: 'https://factorialhr.com/blog?utm_source=tiktok&utm_medium=cpc&gclid=g_123&fbclid=fb_456&ttclid=tt_789&li_fat_id=li_012&twclid=tw_345&rdt_cid=rd_678&tblci=tb_901&hsa_cam=camp_1&placement=feed'
+        url:
+          'https://factorialhr.com/blog?utm_source=tiktok&utm_medium=cpc&gclid=g_123&fbclid=fb_456&ttclid=tt_789&li_fat_id=li_012&twclid=tw_345&rdt_cid=rd_678&tblci=tb_901&hsa_cam=camp_1&placement=feed'
       })
       expect(pixelUrl(dom.window.document)).toEqual(
-        '/internal/pixel?mc=&referer=&language=en&landing_page=https://factorialhr.com/blog&gclid=g_123&fbclid=fb_456&ttclid=tt_789&li_fat_id=li_012&twclid=tw_345&rdt_cid=rd_678&tblci=tb_901&utm_source=tiktok&utm_medium=cpc&hsa_cam=camp_1&placement=feed'
+        '/attribution/pixel?referer=&language=en&landing_page=https://factorialhr.com/blog&gclid=g_123&fbclid=fb_456&ttclid=tt_789&li_fat_id=li_012&twclid=tw_345&rdt_cid=rd_678&tblci=tb_901&utm_source=tiktok&utm_medium=cpc&hsa_cam=camp_1&placement=feed'
       )
     })
   })

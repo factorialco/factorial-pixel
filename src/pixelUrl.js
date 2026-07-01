@@ -1,9 +1,32 @@
 import requestParameters from './requestParameters'
 
 export default document => {
-  const { language, landingPage, gclid, aclid, fbclid, ttclid, li_fat_id, twclid, rdt_cid, tblci, utm_source, utm_medium, utm_campaign, utm_content, utm_term, hsa_ad, hsa_cam, hsa_grp, hsa_kw, hsa_mt, hsa_src, hsa_tgt, placement, colab_name } = requestParameters(
-    document
-  )
+  const {
+    language,
+    landingPage,
+    gclid,
+    aclid,
+    fbclid,
+    ttclid,
+    li_fat_id,
+    twclid,
+    rdt_cid,
+    tblci,
+    utm_source,
+    utm_medium,
+    utm_campaign,
+    utm_content,
+    utm_term,
+    hsa_ad,
+    hsa_cam,
+    hsa_grp,
+    hsa_kw,
+    hsa_mt,
+    hsa_src,
+    hsa_tgt,
+    placement,
+    colab_name
+  } = requestParameters(document)
   const attributes = [
     `referer=${encodeURI(document.referrer)}`,
     `language=${language}`,

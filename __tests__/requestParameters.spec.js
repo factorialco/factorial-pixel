@@ -23,12 +23,14 @@ const domWithFbclid = new JSDOM(html, {
 })
 
 const domWithUtms = new JSDOM(html, {
-  url: 'https://factorialhr.com/team/césar?utm_source=google&utm_medium=cpc&utm_campaign=Q1_Brand&utm_content=ad_variant_1&utm_term=hr_software',
+  url:
+    'https://factorialhr.com/team/césar?utm_source=google&utm_medium=cpc&utm_campaign=Q1_Brand&utm_content=ad_variant_1&utm_term=hr_software',
   referrer: 'https://google.com?query=cómo hacer nóminas'
 })
 
 const domWithHsa = new JSDOM(html, {
-  url: 'https://factorialhr.com/team/césar?hsa_cam=123456&hsa_grp=789012&hsa_ad=345678&hsa_src=google&hsa_mt=exact&hsa_kw=hr_software&hsa_tgt=901234',
+  url:
+    'https://factorialhr.com/team/césar?hsa_cam=123456&hsa_grp=789012&hsa_ad=345678&hsa_src=google&hsa_mt=exact&hsa_kw=hr_software&hsa_tgt=901234',
   referrer: 'https://google.com?query=cómo hacer nóminas'
 })
 
