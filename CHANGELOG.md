@@ -1,9 +1,12 @@
 # Changelog
 
+## `0.12.0`
+
+Drop `mc` support. Attribute to "/api/attribution/pixel" endpoint. See https://app.notion.com/p/factorialco/Attribution-wire-attribution-into-the-HubSpot-contact-sync-38f5e6e051ee8137826efe9a4f54ccfd
+
 ## `0.11.0`
 
 Adds support for colab_name parameter.
-
 
 ## `0.10.0`
 

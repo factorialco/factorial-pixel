@@ -88,7 +88,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var script = document.getElementById('factorial-pixel');
 var customDomain = script ? script.getAttribute('data-domain') : null;
-var domain = customDomain || 'https://api.factorialhr.com';
+var domain = customDomain || 'https://factorialhr.com/api';
 
 var img = document.createElement('img');
 img.src = '' + domain + (0, _pixelUrl2.default)(document);
@@ -118,7 +118,6 @@ exports.default = function (document) {
   var _requestParameters = (0, _requestParameters3.default)(document),
       language = _requestParameters.language,
       landingPage = _requestParameters.landingPage,
-      mc = _requestParameters.mc,
       gclid = _requestParameters.gclid,
       aclid = _requestParameters.aclid,
       fbclid = _requestParameters.fbclid,
@@ -142,7 +141,7 @@ exports.default = function (document) {
       placement = _requestParameters.placement,
       colab_name = _requestParameters.colab_name;
 
-  var attributes = ['mc=' + (mc || ''), 'referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage];
+  var attributes = ['referer=' + encodeURI(document.referrer), 'language=' + language, 'landing_page=' + landingPage];
 
   if (gclid) {
     attributes.push('gclid=' + gclid);
@@ -211,7 +210,7 @@ exports.default = function (document) {
     attributes.push('colab_name=' + encodeURIComponent(colab_name));
   }
 
-  return '/internal/pixel?' + attributes.join('&');
+  return '/attribution/pixel?' + attributes.join('&');
 };
 
 /***/ }),
@@ -251,7 +250,6 @@ function requestParameters(document) {
   var search = document.location.search.substring(1);
   var landing = encodeURI(path);
   var locale = document.querySelector('html').lang.split('-')[0];
-  var mc = findPropertyInParams(search, 'mc');
   var gclid = findPropertyInParams(search, 'gclid');
   var aclid = findPropertyInParams(search, 'aclid');
   var fbclid = findPropertyInParams(search, 'fbclid');
@@ -278,7 +276,6 @@ function requestParameters(document) {
   return {
     language: locale,
     landingPage: landing,
-    mc: mc,
     gclid: gclid,
     aclid: aclid,
     fbclid: fbclid,
