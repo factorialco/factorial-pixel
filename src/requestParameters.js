@@ -15,7 +15,6 @@ export default function requestParameters (document) {
   const search = document.location.search.substring(1)
   const landing = encodeURI(path)
   const locale = document.querySelector('html').lang.split('-')[0]
-  const mc = findPropertyInParams(search, 'mc')
   const gclid = findPropertyInParams(search, 'gclid')
   const aclid = findPropertyInParams(search, 'aclid')
   const fbclid = findPropertyInParams(search, 'fbclid')
@@ -42,7 +41,6 @@ export default function requestParameters (document) {
   return {
     language: locale,
     landingPage: landing,
-    mc,
     gclid,
     aclid,
     fbclid,
