@@ -40,5 +40,11 @@ module.exports = {
     ]
   },
 
-  plugins: []
+  plugins: [
+    // Loaded on every page view, and now eagerly (not lazily) by the sites
+    // that embed it — worth shipping minified. No `devtool` is configured,
+    // so there's no input source map for this to preserve; debugging a
+    // production issue means reading the minified output, same as before.
+    new webpack.optimize.UglifyJsPlugin()
+  ]
 }
