@@ -1,5 +1,11 @@
 # Changelog
 
+## `0.13.0`
+
+Send the pixel via `navigator.sendBeacon` instead of an `<img>` request, falling back to `<img>` where `sendBeacon` isn't available. An `<img>` request can be cancelled mid-flight by a fast navigation away from the page (e.g. a visitor converting on a landing page a beat after clicking through), silently dropping the attribution cookie; `sendBeacon` guarantees delivery even when the page unloads immediately after. This changes the request method from GET to POST — the receiving endpoint must accept both during rollout.
+
+Also minify the built bundle (`webpack.optimize.UglifyJsPlugin`) — 10.9 kB → 3.9 kB. Loaded on every page view, and now eagerly rather than lazily, so worth the size cut. No `devtool` was configured before, so there was never a source map to preserve; debugging a production issue still means reading the (now minified) output.
+
 ## `0.12.0`
 
 Drop `mc` support. Attribute to "/api/attribution/pixel" endpoint. See https://app.notion.com/p/factorialco/Attribution-wire-attribution-into-the-HubSpot-contact-sync-38f5e6e051ee8137826efe9a4f54ccfd
