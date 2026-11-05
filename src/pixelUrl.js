@@ -12,6 +12,7 @@ export default document => {
     twclid,
     rdt_cid,
     tblci,
+    msclkid,
     utm_source,
     utm_medium,
     utm_campaign,
@@ -56,6 +57,9 @@ export default document => {
   }
   if (tblci) {
     attributes.push(`tblci=${tblci}`)
+  }
+  if (msclkid) {
+    attributes.push(`msclkid=${msclkid}`)
   }
   if (utm_source) {
     attributes.push(`utm_source=${encodeURIComponent(utm_source)}`)
