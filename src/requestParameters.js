@@ -35,6 +35,7 @@ export default function requestParameters (document) {
   const twclid = findPropertyInParams(search, 'twclid')
   const rdt_cid = findPropertyInParams(search, 'rdt_cid')
   const tblci = findPropertyInParams(search, 'tblci')
+  const msclkid = findPropertyInParams(search, 'msclkid')
   const placement = findPropertyInParams(search, 'placement')
   const colab_name = findPropertyInParams(search, 'colab_name')
 
@@ -49,6 +50,7 @@ export default function requestParameters (document) {
     twclid,
     rdt_cid,
     tblci,
+    msclkid,
     utm_source,
     utm_medium,
     utm_campaign,

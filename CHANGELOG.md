@@ -1,5 +1,9 @@
 # Changelog
 
+## `0.14.0`
+
+Adds support for the Microsoft Ads click id (`msclkid`).
+
 ## `0.13.0`
 
 Send the pixel via `navigator.sendBeacon` instead of an `<img>` request, falling back to `<img>` where `sendBeacon` isn't available. An `<img>` request can be cancelled mid-flight by a fast navigation away from the page (e.g. a visitor converting on a landing page a beat after clicking through), silently dropping the attribution cookie; `sendBeacon` guarantees delivery even when the page unloads immediately after. This changes the request method from GET to POST — the receiving endpoint must accept both during rollout.

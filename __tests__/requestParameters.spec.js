@@ -59,6 +59,11 @@ const domWithTblci = new JSDOM(html, {
   referrer: 'https://google.com?query=cómo hacer nóminas'
 })
 
+const domWithMsclkid = new JSDOM(html, {
+  url: 'https://factorialhr.com/team/césar?msclkid=ms_click_678',
+  referrer: 'https://www.bing.com/'
+})
+
 const domWithPlacement = new JSDOM(html, {
   url: 'https://factorialhr.com/team/césar?placement=feed',
   referrer: 'https://google.com?query=cómo hacer nóminas'
@@ -164,6 +169,14 @@ describe('requestParameters', () => {
       landingPage: 'https://factorialhr.com/team/c%25C3%25A9sar',
       language: 'en',
       tblci: 'tb_click_345'
+    })
+  })
+
+  it('returns the data with msclkid', () => {
+    expect(requestParameters(domWithMsclkid.window.document)).toEqual({
+      landingPage: 'https://factorialhr.com/team/c%25C3%25A9sar',
+      language: 'en',
+      msclkid: 'ms_click_678'
     })
   })
 
